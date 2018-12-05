@@ -2,7 +2,7 @@
 description: 创建、修改以及删除数据库
 ---
 
-# 管理数据库
+# 管理数据库（Database）
 
 ## 创建数据库（Create）
 
