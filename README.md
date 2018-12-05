@@ -1,2 +1,2 @@
-# mysql-notebook
-MySQL学习笔记
+# Initial page
+
