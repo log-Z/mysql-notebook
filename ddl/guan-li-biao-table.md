@@ -1,5 +1,5 @@
 ---
-description: 创建、修改以及删除表和约束
+description: 创建、修改以及删除表和它的约束
 ---
 
 # 管理表（Table）
