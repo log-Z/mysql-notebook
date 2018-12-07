@@ -1,12 +1,12 @@
 ---
-description: 创建、修改以及删除表和它的约束
+description: 创建、修改以及删除表结构
 ---
 
-# 管理表（Table）
+# 表结构（Table）
 
-## 基础知识
+## 基础知识 <a id="basic"></a>
 
-### 创建表
+### 创建表 <a id="create_table"></a>
 
 基本语法：
 
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS Employees(
 );
 ```
 
-### 修改表
+### 修改表 <a id="alter_table"></a>
 
 基本语法：
 
@@ -61,9 +61,9 @@ ALTER TABLE student DROP COLUMN 专业;
 ALTER TABLE student RENAME AS stu;
 ```
 
-### 删除表
+### 删除表 <a id="drop_table"></a>
 
-语法：
+基本语法：
 
 ```sql
 DROP [TEMPORARY] TABLE [IF EXISTS] <表名> [,<表名>...];
@@ -76,18 +76,18 @@ DROP [TEMPORARY] TABLE [IF EXISTS] <表名> [,<表名>...];
 DROP TABLE IF EXISTS sc;
 ```
 
-## PRIMARY KEY 约束
+## PRIMARY KEY 约束 <a id="primary_key_constraint"></a>
 
  `PRIMARY KEY` 指代主键，主键的值必须唯一且不可为`NULL` 。
 
-### 创建方法
+### 创建方法 <a id="create_primary_key_constraint"></a>
 
 创建 `PRIMARY KEY` 约束有两种方法：
 
 1. 直接在每条字段定义之后声明。这种方式不能指定约束的名称，不能创建联合主键约束（即多个字段共同构成主键）。
 2. 使用单独的子句声明。这种方式可以指定约束的姓名，允许创建联合主键。
 
-语法：
+基本语法：
 
 ```sql
 -- 方法二
@@ -119,9 +119,9 @@ CREATE TABLE sc (
 );
 ```
 
-### 删除方法
+### 删除方法 <a id="drop_primary_key_constraint"></a>
 
-语法：
+基本语法：
 
 ```sql
 ALTER TABLE <表名> DROP PRIMARY KEY;
@@ -134,13 +134,13 @@ ALTER TABLE <表名> DROP PRIMARY KEY;
 ALTER TABLE student DROP PRIMARY KEY;
 ```
 
-## FOREIGN KEY 约束
+## FOREIGN KEY 约束 <a id="foreign_key_constraint"></a>
 
-`FOREIGN KEY` 指代外键，外键的值必须是另一个表中某个字段已有的值，这表示一种参照关系（如“选课表”的学号需要参照“学生表”的学号）。外键的值可以为`NULL` 。
+`FOREIGN KEY` 指代外键，外键的值必须是另一个表中某个字段已有的值，这表示一种参照关系（如“选课表”的学号需要参照“学生表”的学号）。与主键不同，外键的值可以为`NULL` 。
 
-### 创建方法
+### 创建方法 <a id="create_foreign_key_constraint"></a>
 
-语法：
+基本语法：
 
 ```sql
 [CONSTRAINT <约束名>]
@@ -161,9 +161,9 @@ CREATE TABLE sc (
 );
 ```
 
-### 删除方法
+### 删除方法 <a id="drop_foreign_key_constraint"></a>
 
-语法：
+基本语法：
 
 ```sql
 ALTER TABLE <表名> DROP FOREIGN KEY <约束名>;
@@ -175,18 +175,18 @@ ALTER TABLE <表名> DROP FOREIGN KEY <约束名>;
 ALTER TABLE sc DROP FOREIGN KEY f_xh;
 ```
 
-##  UNIQUE 约束
+##  UNIQUE 约束 <a id="unique_constraint"></a>
 
 `UNIQUE` 指代唯一值。有唯一值约束的字段不允许出现重复值。
 
-### 创建方法
+### 创建方法 <a id="create_unique_constraint"></a>
 
 创建 `UNIQUE` 约束有两种方法：
 
 1. 直接在每条字段定义之后声明。这种方式不能指定约束的名称。
 2. 使用单独的子句声明。这种方式可以指定约束的姓名。
 
-语法：
+基本语法：
 
 ```sql
 -- 方法二
@@ -212,9 +212,9 @@ CREATE TABLE student (
 );
 ```
 
-### 删除方法
+### 删除方法 <a id="drop_unique_constraint"></a>
 
-语法：
+基本语法：
 
 ```sql
 ALTER TABLE <表名> DROP KEY <约束名>;
@@ -226,15 +226,15 @@ ALTER TABLE <表名> DROP KEY <约束名>;
 ALTER TABLE student DROP KEY u_sfz;
 ```
 
-##  NOT NULL 约束
+##  NOT NULL 约束 <a id="notnull_constraint"></a>
 
 `NOT NULL` 指代非空。有非空约束的字段的值不允许为 `NULL` 。
 
-### 创建方法
+### 创建方法 <a id="create_notnull_constraint"></a>
 
 直接在每条字段定义之后声明。
 
-语法：
+基本语法：
 
 ```sql
 <字段名> <数据类型> [NOT NULL|NULL]
@@ -251,9 +251,9 @@ CREATE TABLE student (
 );
 ```
 
-### 修改和删除方法
+### 修改和删除方法 <a id="alter_notnull_constraint"></a>
 
-语法：
+基本语法：
 
 ```sql
 ALTER TABLE <表名> MODIFY <字段名> <数据类型> [NOT NULL|NULL];
@@ -271,17 +271,17 @@ ALTER TABLE student MODIFY 身份证号 CHAR(18) NOT NULL;
 
 > 事实上，创建表时如果字段不声明为 `NOT NULL` （不可空），则会默认声明为 `NULL` （即可空）。
 
-##  DEFAULT 约束
+##  DEFAULT 约束 <a id="default_constraint"></a>
 
  `DEFAULT` 指代默认值。在插入数据时，如果没有向某个字段指定值，那么 MySQL 就会把这个字段的默认值作为新记录的值。
 
 > 若字段未声明 `DEFAULT` 约束，则表示默认值为 `NULL` 。
 
-### 创建方法
+### 创建方法 <a id="create_default_constraint"></a>
 
 直接在每条字段定义之后声明。
 
-语法：
+基本语法：
 
 ```sql
 <字段名> <数据类型> DEFAULT 默认值表达式
@@ -298,9 +298,9 @@ CREATE TABLE student (
 );
 ```
 
-### 修改和删除方法
+### 修改和删除方法 <a id="alter_default_constraint"></a>
 
-语法：
+基本语法：
 
 ```sql
 ALTER TABLE t_student ALTER COLUMN <字段名> SET DEFAULT 默认表达式;
@@ -316,19 +316,23 @@ ALTER TABLE t_student ALTER COLUMN 政治面貌 SET DEFAULT '共青团员';
 ALTER TABLE t_student ALTER COLUMN 政治面貌 SET DEFAULT NULL;
 ```
 
-## CHECK 约束
-
-很遗憾，MySQL **暂不支持** `CHECK` 约束，直至 `8.1` 版本也都是如此。
+## CHECK 约束 <a id="check_constraint"></a>
 
 在 SQL 中， `CHECK` 指代检查。检查约束用于审核字段的值是否正确。
 
-> 在 MySQL 中请考虑使用 `触发器` 替代 `CHECK` 约束。
+{% hint style="info" %}
+很遗憾，MySQL **暂不支持** `CHECK` 约束，直至 `8.1` 版本也都是如此。
 
-### 创建方法（骗人的）
+请考虑使用 `触发器`  替代 `CHECK` 约束。
+{% endhint %}
 
-请注意，以下语法不会报错，但其实什么事都不会发生，并不会真的创建了 `CHECK` 约束 😒😒😒 。
+### 创建方法（不存在的） <a id="create_check_constraint"></a>
 
-语法：
+{% hint style="warning" %}
+请注意，以下语法可以正常执行，但其实什么事都不会发生，并不会真的创建了 `CHECK` 约束 😒😒😒 。
+{% endhint %}
+
+基本语法：
 
 ```sql
 [CONSTRAINT <约束名>] CHECK (逻辑表达式)

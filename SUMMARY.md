@@ -4,6 +4,7 @@
 
 ## DDL
 
-* [管理数据库（Database）](ddl/guan-li-shu-ju-ku.md)
-* [管理表（Table）](ddl/guan-li-biao-table.md)
+* [数据库结构（Database）](ddl/database.md)
+* [表结构（Table）](ddl/table.md)
+* [视图结构（View）](ddl/view.md)
 

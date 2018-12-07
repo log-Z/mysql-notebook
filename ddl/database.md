@@ -1,10 +1,10 @@
 ---
-description: 创建、修改以及删除数据库
+description: 创建、修改以及删除数据库结构
 ---
 
-# 管理数据库（Database）
+# 数据库结构（Database）
 
-## 创建数据库
+## 创建数据库 <a id="create_database"></a>
 
 基本语法：
 
@@ -21,7 +21,7 @@ CREATE {DATABASE|SCHEMA} [IF NOT EXISTS] 数据库名
 CREATE DATABASE IF NOT EXISTS database_test_01;
 ```
 
-## 修改数据库
+## 修改数据库 <a id="alter_database"></a>
 
 基本语法：
 
@@ -39,7 +39,7 @@ ALTER DATABASE database_test_01 CHARACTER SET gbk;
 ALTER DATABASE database_test_01 COLLATE gbk_chinese_ci;
 ```
 
-## 删除数据库
+## 删除数据库 <a id="drop_database"></a>
 
 语法：
 
