@@ -11,9 +11,9 @@ description: 创建、修改以及删除表结构
 基本语法：
 
 ```sql
-CREATE [TEMPORARY] TABLE [IF NOT EXISTS] <表名> 
-[(<字段名> <数据类型> [完整性约束条件][,…])] 
-[表的选项];
+CREATE [ TEMPORARY ] TABLE [ IF NOT EXISTS ] <表名> 
+[( <字段名> <数据类型> [ 完整性约束条件 ] [,…] )] 
+[ 表的选项 ];
 ```
 
 示例：
@@ -36,28 +36,28 @@ CREATE TABLE IF NOT EXISTS Employees(
 
 ```sql
 ALTER TABLE <表名>
-{[ADD <新字段名> <数据类型> [<完整性约束条件>][,…]]
-|[ADD INDEX [索引名] (索引字段,...)]
-|[MODIFY COLUMN <字段名> <新数据类型> [<完整性约束条件>]]
-|[DROP {COLUMN <字段名>| <完整性约束名>}[,…]]
-|DROP INDEX <索引名>
-|RENAME [AS] <新表名>
+{ [ ADD <新字段名> <数据类型> [ <完整性约束条件> ] [,…] ]
+| [ ADD INDEX [ 索引名 ] (索引字段,...) ]
+| [ MODIFY COLUMN <字段名> <新数据类型> [ <完整性约束条件> ] ]
+| [ DROP { COLUMN <字段名> | <完整性约束名> } [,…] ]
+| DROP INDEX <索引名>
+| RENAME [ AS ] <新表名>
 };
 ```
 
 示例：
 
 ```sql
--- 添加字段：向student表添加“专业”字段
+-- 添加字段：向 student 表添加“专业”字段
 ALTER TABLE student ADD 专业 CHAR(30);
 
--- 修改字段的数据类型：修改course表中学分的数据类型
+-- 修改字段的数据类型：修改 course 表中学分的数据类型
 ALTER TABLE course MODIFY 学分 SMALLINT;
 
--- 删除字段：删除student表中的“专业”字段
+-- 删除字段：删除 student 表中的“专业”字段
 ALTER TABLE student DROP COLUMN 专业;
 
--- 重命名表：重命名student表为stu
+-- 重命名表：重命名 student 表为 stu
 ALTER TABLE student RENAME AS stu;
 ```
 
@@ -66,7 +66,7 @@ ALTER TABLE student RENAME AS stu;
 基本语法：
 
 ```sql
-DROP [TEMPORARY] TABLE [IF EXISTS] <表名> [,<表名>...];
+DROP [ TEMPORARY ] TABLE [ IF EXISTS ] <表名> [ ,<表名>... ];
 ```
 
 示例：
@@ -91,7 +91,7 @@ DROP TABLE IF EXISTS sc;
 
 ```sql
 -- 方法二
-[CONSTRAINT <约束名>] PRIMARY KEY (字段名[,…])
+[ CONSTRAINT <约束名> ] PRIMARY KEY ( 字段名[,…] )
 ```
 
 示例：
@@ -130,7 +130,7 @@ ALTER TABLE <表名> DROP PRIMARY KEY;
 示例：
 
 ```sql
--- 删除student表的主键约束
+-- 删除 student 表的主键约束
 ALTER TABLE student DROP PRIMARY KEY;
 ```
 
@@ -143,9 +143,9 @@ ALTER TABLE student DROP PRIMARY KEY;
 基本语法：
 
 ```sql
-[CONSTRAINT <约束名>]
-FOREIGN KEY (字段名[,…])
-REFERENCES 引用表名(引用表字段名[,…])
+[ CONSTRAINT <约束名> ]
+FOREIGN KEY ( 字段名 [,…] )
+REFERENCES 引用表名 ( 引用表字段名 [,…] )
 ```
 
 示例：
@@ -190,7 +190,7 @@ ALTER TABLE sc DROP FOREIGN KEY f_xh;
 
 ```sql
 -- 方法二
-[CONSTRAINT <约束名>] UNIQUE (字段名[,…])
+[ CONSTRAINT <约束名> ] UNIQUE ( 字段名 [,…] )
 ```
 
 示例：
@@ -237,7 +237,7 @@ ALTER TABLE student DROP KEY u_sfz;
 基本语法：
 
 ```sql
-<字段名> <数据类型> [NOT NULL|NULL]
+<字段名> <数据类型> [ NOT NULL | NULL ]
 ```
 
 示例：
@@ -256,7 +256,7 @@ CREATE TABLE student (
 基本语法：
 
 ```sql
-ALTER TABLE <表名> MODIFY <字段名> <数据类型> [NOT NULL|NULL];
+ALTER TABLE <表名> MODIFY <字段名> <数据类型> [ NOT NULL | NULL ];
 ```
 
 示例：
@@ -321,7 +321,7 @@ ALTER TABLE t_student ALTER COLUMN 政治面貌 SET DEFAULT NULL;
 在 SQL 中， `CHECK` 指代检查。检查约束用于审核字段的值是否正确。
 
 {% hint style="info" %}
-很遗憾，MySQL **暂不支持** `CHECK` 约束，直至 `8.1` 版本也都是如此。
+很遗憾，直至 `8.1` 版本，MySQL仍 **不支持** `CHECK` 约束。
 
 请考虑使用 `触发器`  替代 `CHECK` 约束。
 {% endhint %}
