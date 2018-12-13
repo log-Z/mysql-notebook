@@ -2,7 +2,7 @@
 description: 创建、修改以及删除数据库结构
 ---
 
-# 数据库结构（Database）
+# 数据库（Database）
 
 ## 创建数据库 <a id="create_database"></a>
 

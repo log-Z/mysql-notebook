@@ -2,7 +2,7 @@
 description: 创建、修改以及删除表结构
 ---
 
-# 表结构（Table）
+# 表（Table）
 
 ## 基础知识 <a id="basic"></a>
 
