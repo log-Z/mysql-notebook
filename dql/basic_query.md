@@ -9,8 +9,8 @@ description: 了解表查询的基本语法和统计函数
 下面的语法经过大量精简，但已能满足基本使用。完整版本请查阅[官方文档](https://dev.mysql.com/doc/refman/8.0/en/select.html)。
 
 ```sql
-SELECT <字段名> [, ...]
-[FROM <表名> [, ...]]
+SELECT <字段名> [ ,... ]
+[FROM <表名> [ ,... ]]
 [WHERE 条件表达式]
 [GROUP BY <字段名> [, ...]]
 [HAVING 条件表达式]
@@ -40,7 +40,7 @@ SELECT district FROM address;
 
 ### 别名 <a id="field_another_name"></a>
 
-当为查询字段指定了别名之后，别名就是它的查询字段名。
+当为查询字段指定了别名之后，别名就是它**新的**查询字段名。
 
 因为起了别名，所以下面两条语句的查询字段名都是“详细地址”。
 
@@ -67,8 +67,17 @@ SELECT payment_id, amount*6.8 人民币 FROM payment;
 ```
 
 {% hint style="info" %}
-如果全部查询字段都不依赖于任何[表](../ddl/table.md)，那么可以忽略 [`FROM`](basic_query.md#lai-yuan-from) 子句。
+如果全部查询字段都不依赖于任何[表](../ddl/table.md)，那么可以忽略 [`FROM`](basic_query.md#from) 子句。
 {% endhint %}
+
+### 补充语法 <a id="query_field_syntax"></a>
+
+下面是基于本节的 `SELECT` 补充语法：
+
+```sql
+SELECT <查询表达式> [[AS] 别名] [, ...]
+...
+```
 
 ## 查询子句 <a id="query_clause"></a>
 
@@ -93,7 +102,7 @@ SELECT distinct FROM address AS addr;
 
 ### 过滤（WHERE） <a id="where"></a>
 
-使用 `WHERE` 子句可以对[数据源](basic_query.md#from)进行过滤，只有符合过滤条件的数据记录才能被进一步处理。
+使用 `WHERE` 子句可以对[数据源](basic_query.md#from)进行**初次**过滤，只有符合过滤条件的数据记录才能被进一步处理。
 
 示例如下：
 
@@ -105,11 +114,42 @@ WHERE sex='女' and birthdate>'1998-1-1';
 
 ### 分组（GROUP BY） <a id="group_by"></a>
 
-_待完成..._
+使用 `GROUP BY` 子句可以指定若干个查询字段，从而将[数据源](basic_query.md#from)按这些查询字段依次进行分类。
+
+示例：
+
+```sql
+-- 查询各个性别的学生数
+SELECT sex, COUNT(*) FROM student
+GROUP BY sex;
+
+-- 查询各个班级的各个性别的学生数
+SELECT class, sex, COUNT(*) FROM student
+GROUP BY class, sex;
+```
+
+{% hint style="info" %}
+如果使用了分组，那么所有的[查询字段](basic_query.md#query_field)都必须（直接或间接的）在 `GROUP BY` 子句中声明。因为对于分组而言，与分组无关的查询字段都是无意义的。
+
+在 MySQL 中，如果查询字段未在 `GROUP BY` 子句中声明，那么系统并不会报错，但得到的查询结果将是无意义的。
+{% endhint %}
 
 ### 分组过滤（HAVING） <a id="having"></a>
 
-_待完成..._
+使用 `HAVING` 子句可以对各个[分组](basic_query.md#group_by)进行过滤，只有符合过滤条件的分组才能被进一步处理。
+
+示例用法：
+
+```sql
+-- 查询男同学的学生数
+SELECT sex, COUNT(*) FROM student
+GROUP BY sex
+HAVING sex='男';
+```
+
+{% hint style="info" %}
+`HAVING` 子句依赖于 [`GROUP BY`](basic_query.md#group_by) 子句，并且 `HAVING`  中使用的查询字段必须是在 [`GROUP BY`](basic_query.md#group_by) 子句中已声明的。因为对于分组过滤而言，与分组无关的查询字段都是无意义的。
+{% endhint %}
 
 ### 排序（ORDER BY） <a id="order_by"></a>
 
