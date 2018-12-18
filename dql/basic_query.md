@@ -77,7 +77,7 @@ SELECT payment_id, amount*6.8 人民币 FROM payment;
 数据源可以是[表](../ddl/table.md)、[视图](../ddl/view.md)、其它查询结果以及它们的融合（连接）。
 
 ```sql
--- 使用其它查询结果作为数据源
+-- 使用其它查询结果作为数据源（代码无意义，仅用于演示）
 SELECT 详细地址 FROM (
   SELECT distict AS 详细地址 FROM address
 );
