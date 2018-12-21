@@ -12,11 +12,13 @@ description: 了解用于查询的统计函数
 
 ## 常用统计函数 <a id="functions"></a>
 
-下面列举了部分比较常用的统计函数，如需查看全部的统计函数请转到[官网](https://dev.mysql.com/doc/refman/8.0/en/group-by-functions.html)。
+统计函数的参数有且只有一个，就是需要统计的[数据源](basic_query.md#from)字段名（用于指定是哪一列数据）。
+
+> 这里只列举了部分比较常用的统计函数，如需查看全部的统计函数请转到[官网](https://dev.mysql.com/doc/refman/8.0/en/group-by-functions.html)。
 
 ### 计数 - COUNT\(field\) <a id="func_count"></a>
 
-计算指定列的记录条数。如果使用 `*` （表示全体）作为参数则不忽略  `NULL` 值，否则将忽略 `NULL` 值。
+返回指定列的记录条数。如果使用 `*` （表示全体）作为参数则不忽略  `NULL` 值，否则将忽略 `NULL` 值。
 
 ```sql
 -- 统计填有年龄的学生记录条数（忽略 NULL 值）
