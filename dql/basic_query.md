@@ -1,5 +1,5 @@
 ---
-description: 了解表查询的基本语法和统计函数
+description: 了解查询的基本语法
 ---
 
 # 基本查询
@@ -81,9 +81,9 @@ SELECT <查询表达式> [[AS] 别名] [, ...]
 
 ## 查询子句 <a id="query_clause"></a>
 
-### 来源（FROM） <a id="from"></a>
+### 来源 - FROM <a id="from"></a>
 
-数据源可以是[表](../ddl/table.md)、[视图](../ddl/view.md)、其它查询结果以及它们的融合（连接）。
+使用 `FROM` 子句可以指定查询的数据源，数据源可以是[表](../ddl/table.md)、[视图](../ddl/view.md)、其它查询结果以及它们的融合。
 
 ```sql
 -- 使用其它查询结果作为数据源（代码无意义，仅用于演示）
@@ -100,7 +100,7 @@ SELECT distinct FROM address addr;
 SELECT distinct FROM address AS addr;
 ```
 
-### 过滤（WHERE） <a id="where"></a>
+### 过滤 - WHERE <a id="where"></a>
 
 使用 `WHERE` 子句可以对[数据源](basic_query.md#from)进行**初次**过滤，只有符合过滤条件的数据记录才能被进一步处理。
 
@@ -112,7 +112,7 @@ SELECT id FROM student
 WHERE sex='女' and birthdate>'1998-1-1';
 ```
 
-### 分组（GROUP BY） <a id="group_by"></a>
+### 分组 - GROUP BY <a id="group_by"></a>
 
 使用 `GROUP BY` 子句可以指定若干个查询字段，从而将[数据源](basic_query.md#from)按这些查询字段依次进行分类。
 
@@ -134,7 +134,7 @@ GROUP BY class, sex;
 在 MySQL 中，如果查询字段未在 `GROUP BY` 子句中声明，那么系统并不会报错，但得到的查询结果将是无意义的。
 {% endhint %}
 
-### 分组过滤（HAVING） <a id="having"></a>
+### 分组过滤 - HAVING <a id="having"></a>
 
 使用 `HAVING` 子句可以对各个[分组](basic_query.md#group_by)进行过滤，只有符合过滤条件的分组才能被进一步处理。
 
@@ -151,7 +151,7 @@ HAVING sex='男';
 `HAVING` 子句依赖于 [`GROUP BY`](basic_query.md#group_by) 子句，并且 `HAVING`  中使用的查询字段必须是在 [`GROUP BY`](basic_query.md#group_by) 子句中已声明的。因为对于分组过滤而言，与分组无关的查询字段都是无意义的。
 {% endhint %}
 
-### 排序（ORDER BY） <a id="order_by"></a>
+### 排序 - ORDER BY <a id="order_by"></a>
 
 使用 `ORDER BY` 子句可以对查询结果进行排序。字段名和排序方向（默认是 `DESC` ）共同组成一个排序规则。当有多个排序规则存在时，先按第一个规则排序，如果第一个字段值相等，则按第二个规则排序，如此类推。
 
@@ -172,7 +172,7 @@ WHERE first_name LIKE 'F%'
 ORDER BY store_id, customer_id DESC;
 ```
 
-### 指定结果范围（LIMIT） <a id="limit"></a>
+### 指定结果范围 - LIMIT <a id="limit"></a>
 
 在查询结果中，每条记录表示为一行数据。
 
@@ -188,7 +188,7 @@ SELECT * FROM address LIMIT 5, 10;
 
 ## 查询参数 <a id="parameter"></a>
 
-### 去除重复记录（DISTINCT） <a id="distinct"></a>
+### 去除重复记录 - DISTINCT <a id="distinct"></a>
 
 使用  `DISTINCT` 关键字可以把多条完全一模一样的记录归并为一条。
 
