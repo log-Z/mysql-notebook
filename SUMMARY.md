@@ -16,5 +16,5 @@
 ## DQL
 
 * [基本查询](dql/basic_query.md)
-* [统计函数](dql/statistic_function.md)
+* [统计函数](dql/aggregate_function.md)
 

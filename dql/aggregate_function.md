@@ -10,7 +10,9 @@ description: 了解用于查询的统计函数
 
 统计函数每次处理一个[分组](basic_query.md#group_by)，它将分组中的所有数据进行统计，然后列出这个分组的统计结果。如果查询没有任何分组，那么系统默认把所有查询结果归为为一个分组。
 
-## 函数列举 <a id="functions"></a>
+## 常用统计函数 <a id="functions"></a>
+
+下面列举了部分比较常用的统计函数，如需查看全部的统计函数请转到[官网](https://dev.mysql.com/doc/refman/8.0/en/group-by-functions.html)。
 
 ### 计数 - COUNT\(field\) <a id="func_count"></a>
 
