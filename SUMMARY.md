@@ -17,4 +17,5 @@
 
 * [基本查询](dql/basic_query.md)
 * [统计函数](dql/aggregate_function.md)
+* [连接查询](dql/join_query.md)
 
