@@ -9,8 +9,8 @@ description: 了解表查询的基本语法和统计函数
 下面的语法经过大量精简，但已能满足基本使用。完整版本请查阅[官方文档](https://dev.mysql.com/doc/refman/8.0/en/select.html)。
 
 ```sql
-SELECT <字段名> [ ,... ]
-[FROM <表名> [ ,... ]]
+SELECT <字段名> [, ...]
+[FROM <表名> [, ...]]
 [WHERE 条件表达式]
 [GROUP BY <字段名> [, ...]]
 [HAVING 条件表达式]
@@ -34,7 +34,7 @@ SELECT district FROM address;
 
 > 很容易看出，查询结果是若干个数据记录（数据行）的集合，因此它也可以当作是一张临时的[表](../ddl/table.md)来看待。也就是说，查询结果也应该要有字段（表头）。
 
-在这里，查询结果的字段统一成为“查询字段”。
+在这里，查询结果中的字段统一成为“查询字段”。
 
 默认情况下，查询字段名等同于它的表达式。比如 `SELECT distinct FROM address` 的查询字段名是“distinct”， `SELECT 1+2` 的查询字段名是“1+2”。
 
@@ -153,15 +153,29 @@ HAVING sex='男';
 
 ### 排序（ORDER BY） <a id="order_by"></a>
 
-_待完成..._
-
-### 去除重复记录（DISTINCT） <a id="distinct"></a>
-
-使用  `DISTINCT` 关键字可以把多条完全一模一样的记录归并为一条。
+使用 `ORDER BY` 子句可以对查询结果进行排序。具体语法如下：
 
 ```sql
--- 消除重复记录
-SELECT DISTINCT district FROM address;
+ORDER BY <字段名> [DESC | ASC] [, ...]
+```
+
+字段名和排序方向（默认是 `DESC` ）共同组成一个排序规则。当有多个排序规则存在时，先按第一个规则排序，如果第一个字段值相等，则按第二个规则排序，如此类推。
+
+```sql
+-- 升序排序
+SELECT * FROM customer
+WHERE first_name LIKE 'F%'
+ORDER BY store_id ASC;
+
+-- 降序排序
+SELECT * FROM customer
+WHERE first_name LIKE 'F%'
+ORDER BY store_id DESC;
+
+-- 多字段逐级排序
+SELECT * FROM customer
+WHERE first_name LIKE 'F%'
+ORDER BY store_id, customer_id DESC;
 ```
 
 ### 指定结果范围（LIMIT） <a id="limit"></a>
@@ -178,5 +192,14 @@ SELECT * FROM address LIMIT 5;
 SELECT * FROM address LIMIT 5, 10;
 ```
 
+## 查询参数 <a id="parameter"></a>
 
+### 去除重复记录（DISTINCT） <a id="distinct"></a>
+
+使用  `DISTINCT` 关键字可以把多条完全一模一样的记录归并为一条。
+
+```sql
+-- 消除重复记录
+SELECT DISTINCT district FROM address;
+```
 
