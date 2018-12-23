@@ -28,7 +28,7 @@ SELECT COUNT(age) FROM student;
 SELECT COUNT(*) FROM student;
 ```
 
-### 求和 - SUM\(field\) <a id="func_sum"></a>
+### 总和 - SUM\(field\) <a id="func_sum"></a>
 
 计算指定列的记录总和，将忽略 `NULL` 值。
 
