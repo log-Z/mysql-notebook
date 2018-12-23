@@ -1,5 +1,5 @@
 ---
-description: 了解交叉连接、内连接和外连接
+description: 了解交叉连接、内连接和外连接的概念和写法
 ---
 
 # 连接查询
@@ -112,7 +112,13 @@ FROM student s INNER JOIN sc USING(学号)
 
 > 在 MySQL 中，连接默认使用内连接，也就是说 `JOIN` 和 `INNER JOIN` 表示的意思是一致的。
 
-## 外连接 <a id="outer_join"></a>
+## 左外连接 <a id="left_outer_join"></a>
+
+### 概念
+
+### 写法
+
+## 右外连接 <a id="right_outer_join"></a>
 
 ### 概念
 
