@@ -6,7 +6,7 @@ description: 了解交叉连接、内连接和外连接的概念和写法
 
 ## 概述 <a id="summary"></a>
 
-“连接”是将多个[数据源](basic_query.md#from)融合到一起的一种方法（另一种方法是集合运算）。
+“连接”是将多个[数据源](basic_query.md#from)融合到一起的一种方法（另一种融合方法是[集合运算](set_operation.md)）。
 
 ## 演示数据 <a id="demo_data"></a>
 
