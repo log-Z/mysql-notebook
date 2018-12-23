@@ -1,5 +1,5 @@
 ---
-description: 了解子查询和相关关键字
+description: 了解子查询和相关操作符
 ---
 
 # 子查询
@@ -20,9 +20,9 @@ description: 了解子查询和相关关键字
 (SELECT ...)
 ```
 
-## 相关关键字 <a id="reserved_word"></a>
+## 相关操作符 <a id="operator"></a>
 
-下面的关键字都必须构成一个条件表达式。
+下面的操作符都必须构成一个条件表达式。
 
 ### ALL
 
