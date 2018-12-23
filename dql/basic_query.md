@@ -83,7 +83,7 @@ SELECT <查询表达式> [[AS] 别名] [, ...]
 
 ### 来源 - FROM <a id="from"></a>
 
-使用 `FROM` 子句可以指定查询的数据源，数据源可以是[表](../ddl/table.md)、[视图](../ddl/view.md)、查询结果以及它们的融合（通过[连接](join_query.md)或集合运算）。
+使用 `FROM` 子句可以指定查询的数据源，数据源可以是[表](../ddl/table.md)、[视图](../ddl/view.md)、[查询结果](subqueries.md)以及它们的融合（通过[连接](join_query.md)或[集合运算](set_operation.md)）。
 
 ```sql
 -- 使用其它查询结果作为数据源（代码无意义，仅用于演示）

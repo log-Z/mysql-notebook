@@ -19,4 +19,5 @@
 * [统计函数](dql/aggregate_function.md)
 * [连接查询](dql/join_query.md)
 * [集合运算](dql/set_operation.md)
+* [子查询](dql/subqueries.md)
 
