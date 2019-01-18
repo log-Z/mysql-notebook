@@ -4,7 +4,7 @@ description: 这是一本 MySQL 学习笔记
 
 # 概述
 
-GitBook：[https://book.logz.ml/](https://book.logz.ml/)
+GitBook：[https://book.logz.ga/](https://book.logz.ga/)
 
 GitHub：[https://github.com/log-Z/mysql-notebook](https://github.com/log-Z/mysql-notebook)
 
